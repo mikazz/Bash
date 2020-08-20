@@ -31,7 +31,7 @@ xterm*|rxvt*)
                 # output them.
                 ;;
             *)
-                echo -ne "\033]0;${PWD}> ${BASH_COMMAND}\007"
+                echo -ne "\033]0;${PWD} > ${BASH_COMMAND}\007"
                 ;;
         esac
     }
