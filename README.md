@@ -43,6 +43,12 @@ esac
 ```
 
 ## Automatically get different terminal colors each time open terminal
+Instructions:
+The Script considers you're using gnome-terminal, which is the default Ubuntu terminal.
+Before running the script, open the gnome-terminal and create some profiles (Edit>Preference>Profiles) with different settings as you wish (background color, text color, ..). You can name them Profile1, Profile2, Profile3 and so on. Create enough Profiles to cover the quantity of Terminals that will be opened, but if a higher number of terminals are opened, the default profile will be used.
+The script creates a file ~/.Bash_Color_Changer, which it depends on, since it will tell the script if the terminal was opened regularly or after a call on .bashrc.
+
+Add the script to the end of ~/.bashrc
 ```bash
 # Change color according to the number of Bash shells opened
 # Creates the .Bash_Color_Changer file if it's not present
