@@ -42,3 +42,30 @@ xterm*|rxvt*)
 esac
 ```
 
+## Automatically get different terminal colors each time open terminal
+```bash
+# Change color according to the number of Bash shells opened
+# Creates the .Bash_Color_Changer file if it's not present
+if ! [ -f ~/.Bash_Color_Changer ]; then
+    echo ORIGINAL > ~/.Bash_Color_Changer
+fi
+
+# Array holding the name of the profiles: Substitute it for the names you're using
+Color_counter=(Profile1 Profile2 Profile3)
+# Finds out the number of opened bashs counting the lines containing "bash"
+# in the pstree function. (-c deactivates compact display to avoid it showing
+# lines with "2*[bash]" instead of one for each bash)
+Number_of_bashs=$(($(pstree -c | grep "bash" | wc -l)-1))
+
+# Checks if the terminal being opened was opened by the user or by
+# the script, and act according to it
+if [ $(cat ~/.Bash_Color_Changer) = ORIGINAL ]; then 
+    if ((Number_of_bashs < ${#Color_counter[*]})); then
+        echo COPY > ~/.Bash_Color_Changer
+        gnome-terminal --tab-with-profile-internal-id=${Color_counter[${Number_of_bashs}]} 
+        exit
+    fi
+else 
+    echo ORIGINAL > ~/.Bash_Color_Changer
+fi
+```
