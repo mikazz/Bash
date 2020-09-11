@@ -1,7 +1,6 @@
-from time import sleep
-from time import localtime
+from time import localtime, sleep
 
-
+# 1 2 3
 class User(object):
     def __new__(cls, name, age):
         """
@@ -12,11 +11,12 @@ class User(object):
         """
         print("Creating Instance")
         return object.__new__(cls)
-        
+
     def __init__(self, name, age):
         """Initializator"""
         self.name = name
         self.age = age
+
 
 class Foo(object):
     def __new__(cls, *args, **kwargs):
@@ -26,10 +26,13 @@ class Foo(object):
     def __init__(self, a, b):
         self.a = a
         self.b = b
- 
+
     def bar(self):
         pass
+
 
 foo = Foo(2, 3)
 
 
+def fff():
+    pass
